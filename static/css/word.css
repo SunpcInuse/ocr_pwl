@@ -1,0 +1,108 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+.upload-section {
+    display: flex;
+    gap: 10px;
+}
+
+input[type="text"], input[type="file"] {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.results {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+}
+
+.result-display, .adjust-content {
+    width: 48%;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+#resultImage {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ccc;
+}
+
+#editor {
+    min-height: 300px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+.controls {
+    margin-top: 10px;
+}
+
+.controls button {
+    padding: 5px 10px;
+    margin-right: 5px;
+    border: none;
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+.controls button:hover {
+    background-color: #ddd;
+}

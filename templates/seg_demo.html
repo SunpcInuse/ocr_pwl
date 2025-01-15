@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>版面图像识别</title>
+    <link rel=stylesheet type="text/css" href="../static/css/word.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>版面图像识别</h1>
+            <div class="upload-section">
+                <input type="text" id="fileName" placeholder="输入文件名称">
+                <input type="file" id="fileUpload">
+                <button id="uploadButton">上传并识别</button>
+            </div>
+        </header>
+
+        <main>
+            <div class="results">
+                <div class="result-display">
+                    <h2>识别结果展示</h2>
+                    <img id="resultImage" src="" alt="识别结果图像">
+                </div>
+                <div class="adjust-content">
+                    <h2>调整识别内容</h2>
+                    <div id="editor" contenteditable="true">
+                        <p>编辑识别内容...</p>
+                    </div>
+                    <div class="controls">
+                        <button onclick="document.execCommand('bold')">加粗</button>
+                        <button onclick="document.execCommand('italic')">斜体</button>
+                        <button onclick="document.execCommand('underline')">下划线</button>
+                        <button onclick="document.execCommand('foreColor', false, 'red')">字体颜色</button>
+                        <button onclick="document.execCommand('createLink', false, 'https://example.com')">插入链接</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../static/js/demo-word.js"></script>
+</body>
+</html>

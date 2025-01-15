@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>批量图像转换</title>
+    <link rel=stylesheet type="text/css" href="../static/css/pdf.css">
+
+</head>
+<body>
+<div class="canvas-container">
+    <div class="upper-canvas">
+        <h1 style="color: forestgreen">批量图像转换</h1>
+      <div id="loading">
+          <div class="loading-text">正在识别，请稍等...</div>
+      </div>
+
+        <div class="input-group">
+            <input type="file" title="点击上传图像" id="fileInput" multiple style="color: red">
+
+            <label id="papername" for="filenamePrefix">生成PDF文件名:</label>
+            <input type="text" id="filenamePrefix">
+            <span id="error-message" class="error"></span>
+
+            <button id="submit">上传并识别</button>
+        </div>
+
+
+    </div>
+    <div class="lower-canvas">
+        <div class="lower-canvas">
+            <div class="left">
+                <span class="function-title">图像预览</span>
+                <div id="imageGallery"></div>
+            </div>
+            <div class="right">
+                <span class="function-title">识别结果</span>
+                <iframe id="pdfViewer" style="width: 100%; height: 100%; border: none;"></iframe>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="../static/js/jquery-3.0.0.min.js"></script>
+<script src="../static/js/demo-pdf.js"></script>
+</body>
+</html>
