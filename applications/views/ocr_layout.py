@@ -4,7 +4,7 @@ import os, cv2, base64, json, re
 from applications import app
 from . import demo_bp
 from datetime import datetime
-
+from applications.functions.layout_word import LayoutWord
 
 
 @demo_bp.route('/layout', methods=['GET'])
@@ -31,18 +31,21 @@ def layout_pic_upload():
         save_path = os.path.join(app.config['UPLOAD_FOLDER'], time2date_folder + '/' + filename)
         file.save(save_path)
         save_path_list.append(save_path)
+    print(save_path_list)
+    lw = LayoutWord(filenamePrefix)
+    lw.generate_word_document(save_path_list)
     return jsonify({'message': 'Files successfully uploaded'}), 200
 
-@demo_bp.route('/download_layout', methods=['POST'])
+@demo_bp.route('/download_layout', methods=['GET'])
 def download_layout():
     # 指定PDF文件的路径
     if request.method == "GET":
         # print(request)
         # print(filename)
         filename = request.args.get('filename')
-        pdf_path = r'../downloads/{}.pdf'.format(filename)
-        # 使用send_file发送PDF文件
-        return send_file(pdf_path, as_attachment=True)
+        docx_path = r'D:\Project\OCR-demo\downloads/{}.docx'.format(filename)
+        # 使用send_file发送WORD文件
+        return send_file(docx_path, as_attachment=True)
 
 
 def sort_file_name(test_list):

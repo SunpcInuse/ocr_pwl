@@ -1,8 +1,10 @@
 from docx import Document
-from docx.shared import Mm
+from docx.shared import Mm, Pt
+from docx.oxml.ns import qn
 from lxml import etree
 from bs4 import BeautifulSoup
 from io import StringIO
+
 
 class TABLE2DOC():
     def __init__(self, doc, table_html_str, out_put_path=None):
@@ -92,8 +94,17 @@ class TABLE2DOC():
         try:
             start_cell = self.table.cell(cell1_list[0], cell1_list[1])
             end_cell = self.table.cell(cell2_list[0], cell2_list[1])
+            # 合并两个单元格的内容
+            combined_text = f"{start_cell.text}".strip()
+            # 清空目标单元格的内容
             end_cell.text = ""
+            # 合并单元格
             start_cell.merge(end_cell)
+            # 设置合并后的内容
+            start_cell.text = combined_text
+            start_cell.paragraphs[0].runs[0].font.name = "Times New Roman"  # 字体大小
+            start_cell.paragraphs[0].runs[0].font.size = Pt(9)  # 字体大小
+            start_cell.paragraphs[0].runs[0]._element.rPr.rFonts.set(qn('w:eastAsia'), '宋体')
         except:
             pass
 
@@ -105,9 +116,11 @@ class TABLE2DOC():
         for i, rows in enumerate(self.table.rows):  # 获取所有行
             for j, cell in enumerate(rows.cells):  # 根据行遍历列
                 cell.text = data[i][j]
+                cell.paragraphs[0].runs[0].font.name = "Times New Roman"  # 字体大小
+                cell.paragraphs[0].runs[0].font.size = Pt(9)  # 字体大小
+                cell.paragraphs[0].runs[0]._element.rPr.rFonts.set(qn('w:eastAsia'), '宋体')
         # 记录已经合并过的单元格
         previous_end = None
-
         # 合并单元格
         for i in range(len(merge_array)):
             start, end = merge_array[i]
